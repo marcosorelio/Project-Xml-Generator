@@ -1,12 +1,11 @@
 package xmlutil;
 
-import java.util.List;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-
+import java.util.List;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.Dom4JDriver;
 import com.thoughtworks.xstream.io.xml.DomDriver;
@@ -37,13 +36,14 @@ public class ManipularXML {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Cliente> obterDadosXML() throws Exception {
 
 		InputStream in = new FileInputStream("D:/xml/teste1.xml");
 		XStream xstream = new XStream(new DomDriver("UTF-8"));
 		xstream.alias("ListaCliente", List.class);
-
 		List<Cliente> lista = (List<Cliente>) xstream.fromXML(in);
+
 		return lista;
 	}
 
